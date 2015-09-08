@@ -1,0 +1,319 @@
+<!--
+    Powered By nodePPT - This is probably the best web presentation tool so far!
+    version: 1.2.5
+    site: https://github.com/ksky521/nodePPT
+-->
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>hybrid phongap app 演示 - By Theo Wang</title>
+    <link rel="stylesheet" media="all" href="./css/nodeppt.css">
+    <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="./css/phone.css">
+    
+    <link rel="stylesheet" href="./js/highlight/styles/monokai_sublime.css">
+    <link rel="stylesheet" href="./css/font-awesome.css">
+    
+<link rel="stylesheet" href="./css/theme.color.css">
+</head>
+<body>
+<div class="slides">
+    <slides id="container">
+        <slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>前沿前端技术汇总</h1>
+<blockquote>
+<p>大前端需要具备那些技能？<br>怎样炼就一线的前沿攻城师攻略？<br>你觉得还有那些前沿技术?<br>请markdown添加上，nodeppt运行。</p>
+</blockquote>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>hybrid app 开发</h1>
+<p><code>node phongap cordova html5 React.js</code></p>
+<p><small>整理：shangwenwu </small></p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vleft">
+<h1>搭建Android开发环境</h1>
+<ul class="rollIn">
+<li>node npm <em>vs:0.8 - 0.10.25</em></li>
+<li>cordova</li>
+<li>jdk 及配置环境变量</li>
+<li>Aapche Ant 及配置环境变量</li>
+<li>Android SDK</li>
+<li><p>ADT</p>
+<p>  <code>iOS 需在苹果机上搭建 ...</code></p>
+</li>
+</ul>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>cordova 创建一个项目</h1>
+<div class="subSlide"><article>
+<ul class="rollIn">
+<li>cordova create hello com.shj.helloworld helloapp  <pre><code class="markdown">第一个 hello 是文件夹的名称；om.shj.helloworld 是app id，第二个 helloapp是工程的名称，也是应用的名称。</code></pre></li>
+<li>cd hello
+  <code>进入工程文件夹</code></li>
+</ul>
+
+</article></div>
+<div class="subSlide"><article>
+<ul>
+<li><p>添加平台支持</p>
+<pre><code class="markdown">
+   $ cordova platform add ios
+   $ cordova platform add amazon-fireos
+   $ cordova platform add android
+   $ cordova platform add blackberry10
+   $ cordova platform add firefoxos
+   $ cordova platform add wp7
+   $ cordova platform add wp8
+   $ cordova platform add windows8
+
+  `此处选择cordova platform add android`
+</code>
+</pre></li>
+</ul>
+
+</article></div>
+<div class="subSlide"><article>
+<ul>
+<li>添加插件支持<pre><code class="markdown">
+`调用手机功能API接口`
+`基本设备资讯 （设备 API）：`
+ $ cordova plugin add org.apache.cordova.device 
+`网路连接和电池事件：`
+ $ cordova plugin add org.apache.cordova.network-information 
+ $ cordova plugin add org.apache.cordova.battery-status
+</code>
+</pre></li>
+<li>API接口地址<pre><code class="markdown">
+`http://docs.phonegap.com/zh/3.4.0/guide_cli_index.md.html`
+</code>
+</pre></li>
+</ul>
+
+</article></div>
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h2>项目目录结构</h2>
+
+</hgroup><article>
+
+<div style="float:left;">
+<img src="./mljg.png" title="目录结构" />
+</div><div style="float:left;margin-left:50px;font-size:18px; line-height:25px; width:650px;  text-align:left;">
+    <p>
+        <h3>www目录：</h3>
+        前端开发的静态文件<br>
+        重点考虑：单网页应用、路由规范、本地信息存储、设计应用框架结构、页面切换过场、跨域请求数据机制、响应式规范、React业务模块组件、公共模块组件、文件加载机制、部署时压缩合并打包机制等。
+        <hr />
+        <h3>platforms目录：</h3>
+        cordova自动生成的平台（ iOS Android ... ）结构<br>
+        重点考虑：了解原生应用的配置文件（ adnroidManifest.xml config.xml .... ）、桌面ICON、启动初始界面等。
+        <hr />
+        <h3>plugins目录：</h3>
+        调用手机底层功能插件,需了解接口API。
+        <h3>config.xml：</h3>
+        app基本信息配置 
+    </p>
+</div>
+</article></section></slide>
+<slide class="slide fill" style="background-image:url('/img/bg1.png')"><section class="slide-wrapper"><article class="flexbox vleft">
+<h1>前端文件开发完成后与Android iOS合并</h1>
+<pre><code class="html">cordova build
+cordova build android
+cordova build ios
+</code></pre>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vleft">
+<h1>真机调试 </h1>
+<pre><code class="html">cordova run build android
+cordova run build ios
+</code></pre>
+<h1>Ripple Emulator安装及调试</h1>
+<pre><code class="html">npm install -g ripple-emulator
+ripple emulate
+</code></pre>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vleft">
+<h1>浏览器运行</h1>
+<pre><code class="html">cordova serve android
+</code></pre>
+<h1>在模拟器上安装测试应用</h1>
+<p>如android平台，应先将 android 模拟器启动并打开</p>
+<pre><code class="html">cordova emulate android
+</code></pre>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h2>生成apk程序目录</h2>
+
+</hgroup><article>
+
+<p><code>platforms\android\build\outputs\apk</code></p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vleft">
+<h1>hybrid app开发框架篇</h1>
+<ol class="rollIn">
+<li>ionic</li>
+<li>reapp</li>
+<li>其它：Ratchet/Lungo/QuoJS/...</li>
+</ol>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<h2>Ionic</h2>
+<blockquote>
+<p>ionic是一个专注于用WEB开发技术，基于HTML5创建类似于手机平台原生应用的一个开发框架。目前绑定的与<code>angularJS</code>和SASS。这个框架的目的是从web的角度开发手机应用，基于PhoneGap的编译平台，可以实现编译成各个平台的应用程序。
+视频教程：<a href="http://www.ionic.wang/course-index.html" target="_blank">http://www.ionic.wang/course-index.html</a></p>
+</blockquote>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<h2>Reapp</h2>
+<blockquote>
+<p>Reapp是一款使用<code>React</code>来开发混合应用的开源框架，为开发者提供了他们开发所需的一切，其中包括各式模块的集合、UI工具包、引导应用的CLI，以及一个预配置的构建服务器，支持Android、iOS。起先，Reapp的构建并不是以成为一个框架为目的，相反，它是作为一个UI工具包开始的。Reapp很简单，你甚至可以只是用其中的UI工具包就能构建出一款应用。</p>
+</blockquote>
+<pre><code class="markdown">如果Ionic框架可以看成Angular与cordova的结合，那么Reapp可以看成是reactjs与cordova的结合。
+</code></pre>
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<h2>hybrid框架对比</h2>
+<p><img src="./reapp.jpg" title="框架对比" /></p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>Webpack 模块加载神器</h1>
+<blockquote>
+<p>Webpack 是德国开发者 Tobias Koppers 开发的模块加载器。Instagram 工程师认为这个方案很棒, 似乎还把作者招过去了。在 Webpack 当中, 所有的资源都被当作是模块, js, css, 图片等等..因此, Webpack 当中 js 可以引用 css, css 中可以嵌入图片 dataUrl。对应各种不同文件类型的资源, Webpack 有对应的模块 loader, 比如 CoffeeScript 用的是 coffee-loader, 其他还有很多:<a href="http://webpack.github.io/docs/list-of-loaders.html" target="_blank">http://webpack.github.io/docs/list-of-loaders.html</a></p>
+</blockquote>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vleft">
+<h1>前端开发技术篇</h1>
+<ol class="rollIn">
+<li>单网页应用</li>
+<li>路由规范</li>
+<li>本地信息存储</li>
+<li>设计应用框架结构</li>
+<li>页面切换过场</li>
+<li>跨域请求数据机制</li>
+<li>响应式规范</li>
+<li>React业务模块组件</li>
+<li>公共模块组件</li>
+<li>文件加载机制</li>
+<li>部署时压缩合并打包机制</li>
+</ol>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vleft">
+<h1>推荐网址篇 </h1>
+<p>大前端<a href="http://haomou.net/" target="_blank">http://haomou.net/</a></p>
+<p>CSS3动画库
+<a href="http://daneden.github.io/animate.css/" target="_blank">http://daneden.github.io/animate.css/</a></p>
+<p>基础样式
+<a href="http://necolas.github.io/normalize.css/" target="_blank">http://necolas.github.io/normalize.css/</a></p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vleft">
+<h1>前端提升篇 </h1>
+<ol class="rollIn">
+<li>第一阶段：库/框架选型（重点）<blockquote>
+<p>react、angular、bootstrap、backbone、animate.css、zepto、jquery、underscore、normalize.css、fontAwesome...</p>
+</blockquote>
+</li>
+<li>第二阶段：自动化构建工具：压缩合并打包..（优化）<blockquote>
+<p>fis3、gulp、grunt、webpack...</p>
+</blockquote>
+</li>
+<li>第三阶段：js/css模块化开发<br><blockquote>
+<p>sea.js、require.js、less、sass、webpack、common.js....</p>
+</blockquote>
+</li>
+<li>第四阶段：合作开发部署<br><blockquote>
+<p>git、svn...</p>
+</blockquote>
+</li>
+<li>第五阶段:开发测试<br><blockquote>
+<p>tower、jira...</p>
+</blockquote>
+</li>
+</ol>
+<p><br>
+摘录：<br>
+<a href="http://www.w3cplus.com/front-end-engineering-part-1.html" target="_blank">http://www.w3cplus.com/front-end-engineering-part-1.html</a></p>
+
+</article></section></slide>
+        
+
+        <slide class="slide logoslide dark nobackground">
+            <article class="flexbox vcenter">
+              <h2 style="color: white;">Powered By nodePPT v1.2.5</h2>
+            </article>
+          </slide>
+        <div class="slideTip" id="tip"></div>
+    </slides>
+</div>
+<canvas id="drawBoard" class="draw-board" width="900" height="700"></canvas>
+<div class="progress"><span id="progress"></span></div>
+<div id="_buttons">
+    <div class="_btn-box" id="_btn-box" style="display:none;">
+        <button class="fa fa-arrow-circle-left" id="_btn-prev"></button>
+        <button class="fa fa-arrow-circle-right" id="_btn-next"></button>
+        <button class="fa fa-paint-brush" id="_btn-brush"></button>
+        <button class="fa fa-compress" id="_btn-overview" data-toggle="fa fa-expand"></button>
+    </div>
+    <button class="fa fa-bars" id="_btn-bar"  data-toggle="fa fa-close"></button>
+</div>
+<script src="./js/mixjs/lib/mix.0.3.0.min.js"></script>
+<script>
+var base = location.protocol + '//' + location.host;
+
+var path = location.pathname.split('/').filter(function(v){
+    return !!v;
+});
+path.pop();
+path = path.join('/');
+MixJS.config({
+    baseURL: [ base, path, 'js'].join('/')+'/'
+});
+
+</script>
+<script src="./js/mixjs/lib/event/broadcast.js"></script>
+<script src="./js/nodeppt.js"></script>
+<script>
+Slide.init({
+    containerID: 'container',
+    drawBoardID: 'drawBoard',
+    slideClass: '.slide',
+    buildClass: '.build',
+    progressID: 'progress',
+    transition: 'move',
+    width: 1100,
+    dir: './',
+    
+    //打开下面的注释就开启postMessage方式
+    //访问网址127.0.0.1:8080/ppt/demo#client
+    control:{
+        type: 'postMessage',
+        args:{
+            isControl:  false
+        }
+    },
+    
+    tipID: 'tip'
+});
+MixJS.loadJS('highlight/hljs-0.8.js',function(){
+    hljs.tabReplace = '  ';
+    hljs.initHighlightingOnLoad();
+});
+</script>
+<script src="./js/demo.js"></script>
+<link rel="stylesheet" href="./css/demo.css">
+<script src="./js/zoom.js"></script>
+<!--placeholder-->
+</body>
+</html>
