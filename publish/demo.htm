@@ -210,6 +210,27 @@ ripple emulate
 
 </article></section></slide>
 <slide class="slide"><section class="slide-wrapper"><article class="flexbox vleft">
+<h1>前端开发技术篇 --- 本地信息存储 store.js</h1>
+<blockquote>
+<p>store.js 是一个实现了浏览器的本地存储的 JavaScript 封装 API，不是通过 Cookie 和 Flash 技术实现，而是使用 localStorage。</p>
+</blockquote>
+<p><br></p>
+<pre><code class="markdown">npm install storejs</code></pre>
+
+<blockquote>
+<p>store(key, data);                 //单个存储字符串数据<br>
+store({key: data, key2: data2});  //批量存储多个字符串数据<br>
+store(key);                       //获取key的字符串数据<br>
+store();                          //获取所有key/data<br>
+store(key,false);                 //删除key包括key的字符串数据<br>
+store.clear();                    //清空所有key/data<br>
+store.keys();                     //返回所有key的数组<br>
+store.forEach(callback);          //循环遍历，返回false结束遍历<br>
+store.has(key);         //⇒判断是否存在返回true/false</p>
+</blockquote>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vleft">
 <h1>推荐网址篇 </h1>
 <p>大前端<a href="http://haomou.net/" target="_blank">http://haomou.net/</a></p>
 <p>CSS3动画库

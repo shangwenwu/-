@@ -181,6 +181,26 @@ cordova emulate android
 11. 部署时压缩合并打包机制
 
 [slide]
+# 前端开发技术篇 --- 本地信息存储 store.js {:&.flexbox.vleft}
+
+
+>store.js 是一个实现了浏览器的本地存储的 JavaScript 封装 API，不是通过 Cookie 和 Flash 技术实现，而是使用 localStorage。
+
+<br>
+<pre><code class="markdown">npm install storejs</code></pre>
+
+>store(key, data);                 //单个存储字符串数据<br>
+store({key: data, key2: data2});  //批量存储多个字符串数据<br>
+store(key);                       //获取key的字符串数据<br>
+store();                          //获取所有key/data<br>
+store(key,false);                 //删除key包括key的字符串数据<br>
+store.clear();                    //清空所有key/data<br>
+store.keys();                     //返回所有key的数组<br>
+store.forEach(callback);          //循环遍历，返回false结束遍历<br>
+store.has(key);         //⇒判断是否存在返回true/false
+
+
+[slide]
 # 推荐网址篇  {:&.flexbox.vleft}
 
 大前端http://haomou.net/
