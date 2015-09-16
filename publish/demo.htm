@@ -210,28 +210,8 @@ ripple emulate
 
 </article></section></slide>
 <slide class="slide"><section class="slide-wrapper"><article class="flexbox vleft">
-<h1>前端开发技术篇 --- 本地信息存储 store.js</h1>
-<blockquote>
-<p>store.js 是一个实现了浏览器的本地存储的 JavaScript 封装 API，不是通过 Cookie 和 Flash 技术实现，而是使用 localStorage。</p>
-</blockquote>
-<p><br></p>
-<pre><code class="markdown">npm install storejs</code></pre>
-
-<blockquote>
-<p>store(key, data);                 //单个存储字符串数据<br>
-store({key: data, key2: data2});  //批量存储多个字符串数据<br>
-store(key);                       //获取key的字符串数据<br>
-store();                          //获取所有key/data<br>
-store(key,false);                 //删除key包括key的字符串数据<br>
-store.clear();                    //清空所有key/data<br>
-store.keys();                     //返回所有key的数组<br>
-store.forEach(callback);          //循环遍历，返回false结束遍历<br>
-store.has(key);         //⇒判断是否存在返回true/false</p>
-</blockquote>
-
-</article></section></slide>
-<slide class="slide"><section class="slide-wrapper"><article class="flexbox vleft">
 <h1>推荐网址篇 </h1>
+<p>醉牛前端<a href="http://f2er.club/" target="_blank">http://f2er.club/</a></p>
 <p>大前端<a href="http://haomou.net/" target="_blank">http://haomou.net/</a></p>
 <p>CSS3动画库
 <a href="http://daneden.github.io/animate.css/" target="_blank">http://daneden.github.io/animate.css/</a></p>
@@ -266,6 +246,18 @@ store.has(key);         //⇒判断是否存在返回true/false</p>
 <p><br>
 摘录：<br>
 <a href="http://www.w3cplus.com/front-end-engineering-part-1.html" target="_blank">http://www.w3cplus.com/front-end-engineering-part-1.html</a></p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vleft">
+<h1>小常识</h1>
+<h2>windows系统建立热点</h2>
+<blockquote>
+<p>cmd命令依次输入<br>
+netsh wlan set hostednetwork mode=allow ssid=mywifi1111 key=12345678<br>
+netsh wlan start hostednetwork<br>
+netsh wlan stop hostednetwork<br></p>
+</blockquote>
+<p><code>备注:ssid为热点名称,key为热点密码。可自行更改</code></p>
 
 </article></section></slide>
         
