@@ -248,5 +248,10 @@ netsh wlan stop hostednetwork<br>
        includeuwsgi_params;
        uwsgi_passunix:/tmp/testFlask1.sock;
     }
+    location/sohu {
+       rewrite^.+sohu/?(.*)$ /$1 break;
+       include uwsgi_params;
+       proxy_pass http://www.sohu.com/;
+    }
 }
 </code></pre>
