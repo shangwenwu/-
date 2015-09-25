@@ -220,3 +220,33 @@ netsh wlan stop hostednetwork<br>
 
 `备注:ssid为热点名称,key为热点密码。可自行更改`
 
+[slide]
+#常见的跨域方式
+1. 使用iFrame访问另一个域。 然后再从另一个页面读取iFrame的内容。jquery等有一些封装。
+2. jsonp。需要服务器支持。使用script src动态得到一段java代码。是回调页面上的js函数，参数是一个json对象。
+3. 设置http头，Access-Control-Allow-Origin：*
+4. 服务器代理。如，服务器写一个url的处理action。其参数是一个url。这个服务器会用参数拼凑一个url,用httpclient库去执行url，然后把读取的内容再输出到http客户端。
+
+
+[slide]
+#nginx反向代理实现跨域
+<pre><code>$('button').click(function(){
+       $.get('partners/json',function(result){ //url地址域名在nginx中配置
+          $('div').html(result);
+       });
+    });
+</code></pre>
+
+<pre><code>server{
+	listen8000;
+    location/ {
+       includeuwsgi_params;
+       uwsgi_passunix:/tmp/testFlask2.sock;
+    }
+    location/partners {
+       rewrite^.+partners/?(.*)$ /$1 break;
+       includeuwsgi_params;
+       uwsgi_passunix:/tmp/testFlask1.sock;
+    }
+}
+</code></pre>
